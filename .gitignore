@@ -1,0 +1,11 @@
+# Local secrets — never commit real credentials
+Api/secrets_local.py
+secrets_local.py
+
+# Python
+__pycache__/
+*.pyc
+
+# Runtime / logs
+*.log
+App/stderr.log

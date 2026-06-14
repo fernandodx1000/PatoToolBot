@@ -228,7 +228,7 @@ GAME_CONFIGS = {
         "emoji": "🎯",
         "exe_names": ["UAGame.exe", "ArenaBreakout.exe", "Arena Breakout.exe"],
         "window_title": "Arena Breakout",
-        "color": "#ffd700",
+        "color": "#f6c453",
     },
     "arc_raiders": {
         "name": "Arc Raiders",
@@ -584,36 +584,36 @@ def check_for_update(force=False):
             confirmed = [False]
             confirm_win = tk.Tk()
             confirm_win.title("Update Available")
-            confirm_win.configure(bg="#0a0e27")
+            confirm_win.configure(bg="#0a0b11")
             confirm_win.resizable(False, False)
             confirm_win.attributes("-topmost", True)
             _center_win(confirm_win, 460, 290)
 
-            tk.Frame(confirm_win, bg="#1a1f3a", height=70).pack(fill="x")
-            hdr = tk.Frame(confirm_win, bg="#1a1f3a")
+            tk.Frame(confirm_win, bg="#14161e", height=70).pack(fill="x")
+            hdr = tk.Frame(confirm_win, bg="#14161e")
             hdr.place(x=0, y=0, width=460, height=70)
             tk.Label(hdr, text="\U0001f986  Update Available",
-                     font=("Segoe UI", 14, "bold"), bg="#1a1f3a", fg="#ffd700").place(relx=0.5, rely=0.5, anchor="center")
+                     font=("Segoe UI", 14, "bold"), bg="#14161e", fg="#f6c453").place(relx=0.5, rely=0.5, anchor="center")
 
-            body = tk.Frame(confirm_win, bg="#0a0e27")
+            body = tk.Frame(confirm_win, bg="#0a0b11")
             body.pack(fill="both", expand=True, padx=30, pady=(80, 10))
 
             tk.Label(confirm_win, text=f"New version  {latest_version}  is available",
-                     font=("Segoe UI", 12, "bold"), bg="#0a0e27", fg="#ffffff").place(x=30, y=85)
+                     font=("Segoe UI", 12, "bold"), bg="#0a0b11", fg="#ffffff").place(x=30, y=85)
             tk.Label(confirm_win, text=f"You are on version  {CURRENT_VERSION}",
-                     font=("Segoe UI", 10), bg="#0a0e27", fg="#8b9dc3").place(x=30, y=115)
+                     font=("Segoe UI", 10), bg="#0a0b11", fg="#8b91a8").place(x=30, y=115)
             tk.Label(confirm_win, text="Download and install now?",
-                     font=("Segoe UI", 10), bg="#0a0e27", fg="#a0a0a0").place(x=30, y=150)
+                     font=("Segoe UI", 10), bg="#0a0b11", fg="#9298ac").place(x=30, y=150)
 
             def do_yes():
                 confirmed[0] = True
                 confirm_win.destroy()
 
             tk.Button(confirm_win, text="  Update Now  ", font=("Segoe UI", 10, "bold"),
-                      bg="#ffd700", fg="#0a0e27", relief="flat", cursor="hand2",
+                      bg="#f6c453", fg="#0a0b11", relief="flat", cursor="hand2",
                       command=do_yes, padx=10, pady=8).place(x=30, y=220)
             tk.Button(confirm_win, text="  Skip  ", font=("Segoe UI", 10),
-                      bg="#2a2f4a", fg="#8b9dc3", relief="flat", cursor="hand2",
+                      bg="#1e212c", fg="#8b91a8", relief="flat", cursor="hand2",
                       command=confirm_win.destroy, padx=10, pady=8).place(x=155, y=220)
 
             confirm_win.mainloop()
@@ -626,40 +626,40 @@ def check_for_update(force=False):
         BAR_W = 420
         prog_win = tk.Tk()
         prog_win.title("Updating PatoToolBot")
-        prog_win.configure(bg="#0a0e27")
+        prog_win.configure(bg="#0a0b11")
         prog_win.resizable(False, False)
         prog_win.attributes("-topmost", True)
         _center_win(prog_win, 480, 230)
 
         # Header
-        hdr2 = tk.Frame(prog_win, bg="#1a1f3a", height=60)
+        hdr2 = tk.Frame(prog_win, bg="#14161e", height=60)
         hdr2.pack(fill="x")
         hdr2.pack_propagate(False)
         tk.Label(hdr2, text="\U0001f986  PatoToolBot Updater",
-                 font=("Segoe UI", 13, "bold"), bg="#1a1f3a", fg="#ffd700").pack(expand=True)
+                 font=("Segoe UI", 13, "bold"), bg="#14161e", fg="#f6c453").pack(expand=True)
 
-        body2 = tk.Frame(prog_win, bg="#0a0e27")
+        body2 = tk.Frame(prog_win, bg="#0a0b11")
         body2.pack(fill="both", expand=True, padx=26, pady=10)
 
         status_var = tk.StringVar(value="Connecting to server...")
         tk.Label(body2, textvariable=status_var, font=("Consolas", 9),
-                 bg="#0a0e27", fg="#8b9dc3").pack(anchor="w", pady=(0, 8))
+                 bg="#0a0b11", fg="#8b91a8").pack(anchor="w", pady=(0, 8))
 
         # Fixed-width bar container so we always know BAR_W pixels wide
-        bar_bg = tk.Frame(body2, bg="#1a1f3a", width=BAR_W, height=20)
+        bar_bg = tk.Frame(body2, bg="#14161e", width=BAR_W, height=20)
         bar_bg.pack(anchor="w")
         bar_bg.pack_propagate(False)
-        bar_fill = tk.Frame(bar_bg, bg="#ffd700", height=20, width=0)
+        bar_fill = tk.Frame(bar_bg, bg="#f6c453", height=20, width=0)
         bar_fill.place(x=0, y=0, height=20, width=0)
 
-        info_row = tk.Frame(body2, bg="#0a0e27")
+        info_row = tk.Frame(body2, bg="#0a0b11")
         info_row.pack(fill="x", pady=(6, 0))
         pct_var = tk.StringVar(value="0%")
         tk.Label(info_row, textvariable=pct_var, font=("Consolas", 11, "bold"),
-                 bg="#0a0e27", fg="#ffffff").pack(side="left")
+                 bg="#0a0b11", fg="#ffffff").pack(side="left")
         size_var = tk.StringVar(value="")
         tk.Label(info_row, textvariable=size_var, font=("Consolas", 8),
-                 bg="#0a0e27", fg="#4a5568").pack(side="right")
+                 bg="#0a0b11", fg="#3a3f52").pack(side="right")
 
         prog_win.update()
 
@@ -849,20 +849,20 @@ class SplashScreen:
         # Duck emoji
         tk.Label(self.root, text="🦆",
                  font=("Segoe UI Emoji", 120),
-                 bg=self._TRANSPARENT, fg="#ffd700").place(relx=0.5, rely=0.42, anchor="center")
+                 bg=self._TRANSPARENT, fg="#f6c453").place(relx=0.5, rely=0.42, anchor="center")
 
         # Status label (hidden by default)
         self._status_var = tk.StringVar(value="")
         self._status_lbl = tk.Label(self.root, textvariable=self._status_var,
                                      font=("Segoe UI", 10, "bold"),
-                                     bg=self._TRANSPARENT, fg="#ffd700")
+                                     bg=self._TRANSPARENT, fg="#f6c453")
         self._status_lbl.place(relx=0.5, rely=0.78, anchor="center")
 
         # Progress bar canvas
         self._bar_canvas = tk.Canvas(self.root, width=260, height=8,
-                                      bg="#1a1f3a", highlightthickness=0, bd=0)
+                                      bg="#14161e", highlightthickness=0, bd=0)
         self._bar_canvas.place(relx=0.5, rely=0.88, anchor="center")
-        self._bar_rect = self._bar_canvas.create_rectangle(0, 0, 0, 8, fill="#ffd700", outline="")
+        self._bar_rect = self._bar_canvas.create_rectangle(0, 0, 0, 8, fill="#f6c453", outline="")
         self._bar_canvas.place_forget()  # hidden until set_status called
 
         self.root.update()
@@ -958,7 +958,7 @@ class AuthWindow:
         self.root.title("Pato's Tool  Bot - Login")
         self.root.geometry("520x800")
         _set_icon(self.root)
-        self.root.configure(bg="#0a0e27")
+        self.root.configure(bg="#0a0b11")
         self.root.minsize(480, 700)
         self.root.resizable(True, True)
         self.hwid = get_hwid()   # must run on main thread — PowerShell behaves differently in worker threads
@@ -992,59 +992,74 @@ class AuthWindow:
         y = (dialog.winfo_screenheight() // 2) - (h // 2)
         dialog.geometry(f"{w}x{h}+{x}+{y}")
 
+    def _focus_ring(self, entry):
+        """Give an entry a subtle border that glows gold on focus."""
+        entry.configure(highlightthickness=1, highlightbackground="#222633", highlightcolor="#f6c453")
+
+    def _hover(self, btn, normal, hover):
+        """Lighten a button on hover for a tactile, premium feel."""
+        btn.bind("<Enter>", lambda e: btn.configure(bg=hover))
+        btn.bind("<Leave>", lambda e: btn.configure(bg=normal))
+
     def _build_ui(self):
-        main_container = tk.Frame(self.root, bg="#0a0e27")
+        main_container = tk.Frame(self.root, bg="#0a0b11")
         main_container.pack(fill="both", expand=True)
         main_container.grid_rowconfigure(1, weight=1)
         main_container.grid_columnconfigure(0, weight=1)
         
-        header = tk.Frame(main_container, bg="#1a1f3a", height=160)
+        header = tk.Frame(main_container, bg="#14161e", height=160)
         header.grid(row=0, column=0, sticky="ew")
         header.pack_propagate(False)
         header.grid_columnconfigure(0, weight=1)
-        tk.Label(header, text="🦆", font=("Arial", 60), bg="#1a1f3a", fg="#ffd700").pack(pady=(20,0))
-        tk.Label(header, text="PATO'S Tool Bot", font=("Consolas", 22, "bold"), bg="#1a1f3a", fg="#ffd700").pack()
-        tk.Label(header, text="Market Bot v2.15 - 2026", font=("Consolas", 12), bg="#1a1f3a", fg="#8b9dc3").pack(pady=4)
+        tk.Frame(header, bg="#f6c453", height=2).pack(side="bottom", fill="x")
+        tk.Label(header, text="🦆", font=("Segoe UI", 60), bg="#14161e", fg="#f6c453").pack(pady=(20,0))
+        tk.Label(header, text="PATO'S TOOL BOT", font=("Consolas", 22, "bold"), bg="#14161e", fg="#f6c453").pack()
+        tk.Label(header, text=f"Market Bot · v{CURRENT_VERSION} · 2026", font=("Consolas", 11), bg="#14161e", fg="#8b91a8").pack(pady=4)
 
-        form = tk.Frame(main_container, bg="#0a0e27")
+        form = tk.Frame(main_container, bg="#0a0b11")
         form.grid(row=1, column=0, sticky="nsew", padx=60, pady=30)
         form.grid_columnconfigure(0, weight=1)
 
-        tk.Label(form, text="Login", font=("Consolas", 16, "bold"), bg="#0a0e27", fg="#ffffff").pack(pady=(0,20))
-        tk.Label(form, text="Username", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-        self.username_entry = tk.Entry(form, font=("Consolas", 13), bg="#1a1f3a", fg="#fff",
-                                       insertbackground="#ffd700", relief="flat", bd=0)
+        tk.Label(form, text="Login", font=("Consolas", 16, "bold"), bg="#0a0b11", fg="#ffffff").pack(pady=(0,20))
+        tk.Label(form, text="Username", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+        self.username_entry = tk.Entry(form, font=("Consolas", 13), bg="#14161e", fg="#fff",
+                                       insertbackground="#f6c453", relief="flat", bd=0)
         self.username_entry.pack(fill="x", ipady=10, pady=(4,20))
+        self._focus_ring(self.username_entry)
         _last = _load_last_user()
         self.username_entry.insert(0, _last if _last else "pato")
 
-        tk.Label(form, text="Password", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-        self.password_entry = tk.Entry(form, font=("Consolas", 13), show="•", bg="#1a1f3a", fg="#fff",
-                                       insertbackground="#ffd700", relief="flat", bd=0)
+        tk.Label(form, text="Password", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+        self.password_entry = tk.Entry(form, font=("Consolas", 13), show="•", bg="#14161e", fg="#fff",
+                                       insertbackground="#f6c453", relief="flat", bd=0)
         self.password_entry.pack(fill="x", ipady=10, pady=(4,20))
+        self._focus_ring(self.password_entry)
         if _last:
             self.root.after(50, self.password_entry.focus)
 
-        self._login_btn = tk.Button(form, text="LOGIN", font=("Consolas", 13, "bold"), bg="#ffd700", fg="#0a0e27",
+        self._login_btn = tk.Button(form, text="LOGIN", font=("Consolas", 13, "bold"), bg="#f6c453", fg="#0a0b11",
                   relief="flat", cursor="hand2", command=self._attempt_login)
         self._login_btn.pack(fill="x", ipady=12, pady=(0,15))
+        self._hover(self._login_btn, "#f6c453", "#ffe6a6")
 
-        tk.Button(form, text="REGISTER NEW ACCOUNT", font=("Consolas", 11, "bold"), bg="#2ecc71", fg="white",
-                  relief="flat", cursor="hand2", command=self._open_register).pack(fill="x", ipady=10)
+        reg_btn = tk.Button(form, text="REGISTER NEW ACCOUNT", font=("Consolas", 11, "bold"), bg="#54e0a2", fg="#0a0b11",
+                  relief="flat", cursor="hand2", command=self._open_register)
+        reg_btn.pack(fill="x", ipady=10)
+        self._hover(reg_btn, "#54e0a2", "#7bf0bd")
 
-        tk.Button(form, text="Forgot Password?", font=("Consolas", 10), bg="#0a0e27", fg="#8b9dc3",
+        tk.Button(form, text="Forgot Password?", font=("Consolas", 10), bg="#0a0b11", fg="#8b91a8",
                   relief="flat", cursor="hand2", command=self._open_forgot_password).pack(pady=(10,0))
 
-        hwid_f = tk.Frame(form, bg="#0a0e27")
+        hwid_f = tk.Frame(form, bg="#0a0b11")
         hwid_f.pack(fill="x", pady=(40,0))
-        tk.Label(hwid_f, text="Your HWID:", font=("Consolas", 10, "bold"), bg="#0a0e27", fg="#e74c3c").pack(anchor="w")
-        hwid_txt = tk.Text(hwid_f, height=4, font=("Consolas", 10), bg="#1a1f3a", fg="#95a5a6",
+        tk.Label(hwid_f, text="Your HWID:", font=("Consolas", 10, "bold"), bg="#0a0b11", fg="#e74c3c").pack(anchor="w")
+        hwid_txt = tk.Text(hwid_f, height=4, font=("Consolas", 10), bg="#14161e", fg="#8b91a8",
                            relief="flat", bd=0, wrap="word")
         hwid_txt.insert("1.0", self.hwid if self.hwid else "Loading...")
         hwid_txt.config(state="disabled")
         hwid_txt.pack(fill="x", pady=6)
         tk.Label(hwid_f, text="(send to admin if needed)", font=("Consolas", 9, "italic"),
-                 bg="#0a0e27", fg="#4a5568").pack(anchor="w")
+                 bg="#0a0b11", fg="#3a3f52").pack(anchor="w")
 
         def _fill_hwid():
             import threading as _t
@@ -1063,9 +1078,9 @@ class AuthWindow:
             _t.Thread(target=_fetch, daemon=True).start()
         self.root.after(100, _fill_hwid)
 
-        footer = tk.Frame(main_container, bg="#0a0e27")
+        footer = tk.Frame(main_container, bg="#0a0b11")
         footer.grid(row=2, column=0, sticky="ew")
-        tk.Label(footer, text=f"API: {API_BASE_URL}", font=("Consolas", 9), bg="#0a0e27", fg="#4a5568").pack(pady=20)
+        tk.Label(footer, text=f"API: {API_BASE_URL}", font=("Consolas", 9), bg="#0a0b11", fg="#3a3f52").pack(pady=20)
 
         self.password_entry.bind("<Return>", lambda e: self._attempt_login())
         self.username_entry.bind("<Return>", lambda e: self.password_entry.focus())
@@ -1074,32 +1089,32 @@ class AuthWindow:
     def _open_register(self):
         win = Toplevel(self.root)
         win.title("Register")
-        win.configure(bg="#0a0e27")
+        win.configure(bg="#0a0b11")
         win.transient(self.root)
         win.grab_set()
         self._center_dialog(win)
 
-        main_frame = tk.Frame(win, bg="#0a0e27")
+        main_frame = tk.Frame(win, bg="#0a0b11")
         main_frame.pack(fill="both", expand=True, padx=50, pady=20)
         main_frame.grid_columnconfigure(0, weight=1)
 
-        tk.Label(main_frame, text="Create Account", font=("Consolas", 16, "bold"), bg="#0a0e27", fg="#ffd700").pack(pady=(0,20))
+        tk.Label(main_frame, text="Create Account", font=("Consolas", 16, "bold"), bg="#0a0b11", fg="#f6c453").pack(pady=(0,20))
 
-        tk.Label(main_frame, text="Username", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-        u_ent = tk.Entry(main_frame, font=("Consolas", 13), bg="#1a1f3a", fg="#fff", insertbackground="#ffd700", relief="flat")
+        tk.Label(main_frame, text="Username", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+        u_ent = tk.Entry(main_frame, font=("Consolas", 13), bg="#14161e", fg="#fff", insertbackground="#f6c453", relief="flat")
         u_ent.pack(fill="x", ipady=8, pady=(4,16))
 
-        tk.Label(main_frame, text="Email", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-        e_ent = tk.Entry(main_frame, font=("Consolas", 13), bg="#1a1f3a", fg="#fff", insertbackground="#ffd700", relief="flat")
+        tk.Label(main_frame, text="Email", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+        e_ent = tk.Entry(main_frame, font=("Consolas", 13), bg="#14161e", fg="#fff", insertbackground="#f6c453", relief="flat")
         e_ent.pack(fill="x", ipady=8, pady=(4,16))
-        tk.Label(main_frame, text="Used for password recovery", font=("Consolas", 9, "italic"), bg="#0a0e27", fg="#4a5568").pack(anchor="w", pady=(0,8))
+        tk.Label(main_frame, text="Used for password recovery", font=("Consolas", 9, "italic"), bg="#0a0b11", fg="#3a3f52").pack(anchor="w", pady=(0,8))
 
-        tk.Label(main_frame, text="Password", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-        p_ent = tk.Entry(main_frame, font=("Consolas", 13), show="•", bg="#1a1f3a", fg="#fff", insertbackground="#ffd700", relief="flat")
+        tk.Label(main_frame, text="Password", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+        p_ent = tk.Entry(main_frame, font=("Consolas", 13), show="•", bg="#14161e", fg="#fff", insertbackground="#f6c453", relief="flat")
         p_ent.pack(fill="x", ipady=8, pady=(4,16))
 
-        tk.Label(main_frame, text="Confirm Password", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-        c_ent = tk.Entry(main_frame, font=("Consolas", 13), show="•", bg="#1a1f3a", fg="#fff", insertbackground="#ffd700", relief="flat")
+        tk.Label(main_frame, text="Confirm Password", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+        c_ent = tk.Entry(main_frame, font=("Consolas", 13), show="•", bg="#14161e", fg="#fff", insertbackground="#f6c453", relief="flat")
         c_ent.pack(fill="x", ipady=8, pady=(4,30))
 
         def register():
@@ -1124,7 +1139,7 @@ class AuthWindow:
                 msg = resp.get("error", f"HTTP {code}") if isinstance(resp, dict) else "Server error"
                 messagebox.showerror("Failed", msg, parent=win)
 
-        tk.Button(main_frame, text="REGISTER", font=("Consolas", 12, "bold"), bg="#2ecc71", fg="white",
+        tk.Button(main_frame, text="REGISTER", font=("Consolas", 12, "bold"), bg="#54e0a2", fg="white",
                   relief="flat", command=register).pack(fill="x", ipady=12, pady=(0,8))
         tk.Button(main_frame, text="Cancel", font=("Consolas", 11), bg="#34495e", fg="white",
                   relief="flat", command=win.destroy).pack(fill="x", ipady=10)
@@ -1134,19 +1149,19 @@ class AuthWindow:
     def _open_forgot_password(self):
         win = Toplevel(self.root)
         win.title("Forgot Password")
-        win.configure(bg="#0a0e27")
+        win.configure(bg="#0a0b11")
         win.transient(self.root)
         win.grab_set()
 
-        f = tk.Frame(win, bg="#0a0e27")
+        f = tk.Frame(win, bg="#0a0b11")
         f.pack(fill="both", expand=True, padx=40, pady=30)
 
-        tk.Label(f, text="Reset Password", font=("Consolas", 15, "bold"), bg="#0a0e27", fg="#ffd700").pack(pady=(0,6))
+        tk.Label(f, text="Reset Password", font=("Consolas", 15, "bold"), bg="#0a0b11", fg="#f6c453").pack(pady=(0,6))
         tk.Label(f, text="Enter your email address.\nWe'll send you a reset link.", font=("Consolas", 10),
-                 bg="#0a0e27", fg="#8b9dc3", justify="center").pack(pady=(0,20))
+                 bg="#0a0b11", fg="#8b91a8", justify="center").pack(pady=(0,20))
 
-        tk.Label(f, text="Email", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-        em_ent = tk.Entry(f, font=("Consolas", 13), bg="#1a1f3a", fg="#fff", insertbackground="#ffd700", relief="flat")
+        tk.Label(f, text="Email", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+        em_ent = tk.Entry(f, font=("Consolas", 13), bg="#14161e", fg="#fff", insertbackground="#f6c453", relief="flat")
         em_ent.pack(fill="x", ipady=8, pady=(4,20))
 
         def send_reset():
@@ -1157,7 +1172,7 @@ class AuthWindow:
             messagebox.showinfo("Sent", "If that email is registered you will receive a reset link.", parent=win)
             win.destroy()
 
-        tk.Button(f, text="SEND RESET LINK", font=("Consolas", 11, "bold"), bg="#ffd700", fg="#0a0e27",
+        tk.Button(f, text="SEND RESET LINK", font=("Consolas", 11, "bold"), bg="#f6c453", fg="#0a0b11",
                   relief="flat", cursor="hand2", command=send_reset).pack(fill="x", ipady=10, pady=(0,8))
         tk.Button(f, text="Cancel", font=("Consolas", 10), bg="#34495e", fg="white",
                   relief="flat", command=win.destroy).pack(fill="x", ipady=8)
@@ -1170,19 +1185,19 @@ class AuthWindow:
         Calls on_done() when the window is closed (saved or skipped)."""
         win = Toplevel(self.root)
         win.title("Add Email")
-        win.configure(bg="#0a0e27")
+        win.configure(bg="#0a0b11")
         win.transient(self.root)
         win.grab_set()
 
-        f = tk.Frame(win, bg="#0a0e27")
+        f = tk.Frame(win, bg="#0a0b11")
         f.pack(fill="both", expand=True, padx=40, pady=30)
 
-        tk.Label(f, text="📧 Add Your Email", font=("Consolas", 14, "bold"), bg="#0a0e27", fg="#ffd700").pack(pady=(0,8))
+        tk.Label(f, text="📧 Add Your Email", font=("Consolas", 14, "bold"), bg="#0a0b11", fg="#f6c453").pack(pady=(0,8))
         tk.Label(f, text="Your account doesn't have an email.\nAdd one now to enable password recovery.",
-                 font=("Consolas", 10), bg="#0a0e27", fg="#8b9dc3", justify="center").pack(pady=(0,18))
+                 font=("Consolas", 10), bg="#0a0b11", fg="#8b91a8", justify="center").pack(pady=(0,18))
 
-        tk.Label(f, text="Email", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-        em_ent = tk.Entry(f, font=("Consolas", 13), bg="#1a1f3a", fg="#fff", insertbackground="#ffd700", relief="flat")
+        tk.Label(f, text="Email", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+        em_ent = tk.Entry(f, font=("Consolas", 13), bg="#14161e", fg="#fff", insertbackground="#f6c453", relief="flat")
         em_ent.pack(fill="x", ipady=8, pady=(4,18))
 
         def _close():
@@ -1211,9 +1226,9 @@ class AuthWindow:
             threading.Thread(target=_do_save, daemon=True).start()
 
         win.protocol("WM_DELETE_WINDOW", _close)
-        tk.Button(f, text="SAVE EMAIL", font=("Consolas", 11, "bold"), bg="#ffd700", fg="#0a0e27",
+        tk.Button(f, text="SAVE EMAIL", font=("Consolas", 11, "bold"), bg="#f6c453", fg="#0a0b11",
                   relief="flat", cursor="hand2", command=save).pack(fill="x", ipady=10, pady=(0,8))
-        tk.Button(f, text="Skip (not recommended)", font=("Consolas", 9), bg="#0a0e27", fg="#4a5568",
+        tk.Button(f, text="Skip (not recommended)", font=("Consolas", 9), bg="#0a0b11", fg="#3a3f52",
                   relief="flat", cursor="hand2", command=_close).pack()
         em_ent.bind("<Return>", lambda e: save())
         self._autosize_dialog(win, min_w=380, min_h=260)
@@ -1326,33 +1341,33 @@ class AuthWindow:
 
             act_win = Toplevel(_master)
             act_win.title("Activate License")
-            act_win.configure(bg="#0a0e27")
+            act_win.configure(bg="#0a0b11")
             act_win.geometry("520x520")
             act_win.minsize(480, 480)
             act_win.resizable(True, True)
             act_win.lift()
             act_win.focus_force()
 
-            main_frame = tk.Frame(act_win, bg="#0a0e27")
+            main_frame = tk.Frame(act_win, bg="#0a0b11")
             main_frame.pack(fill="both", expand=True, padx=40, pady=20)
             main_frame.grid_columnconfigure(0, weight=1)
 
-            tk.Label(main_frame, text="Activate License", font=("Consolas", 18, "bold"), bg="#0a0e27", fg="#ffd700").pack(pady=(0,10))
-            tk.Label(main_frame, text=f"User: {self.username}", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(pady=(0,20))
-            tk.Label(main_frame, text="HWID:", font=("Consolas", 10, "bold"), bg="#0a0e27", fg="#e74c3c").pack(anchor="w")
-            txt = tk.Text(main_frame, height=3, font=("Consolas", 10), bg="#1a1f3a", fg="#95a5a6", relief="flat", wrap="word")
+            tk.Label(main_frame, text="Activate License", font=("Consolas", 18, "bold"), bg="#0a0b11", fg="#f6c453").pack(pady=(0,10))
+            tk.Label(main_frame, text=f"User: {self.username}", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(pady=(0,20))
+            tk.Label(main_frame, text="HWID:", font=("Consolas", 10, "bold"), bg="#0a0b11", fg="#e74c3c").pack(anchor="w")
+            txt = tk.Text(main_frame, height=3, font=("Consolas", 10), bg="#14161e", fg="#8b91a8", relief="flat", wrap="word")
             txt.insert("1.0", self.hwid)
             txt.config(state="disabled")
             txt.pack(fill="x", pady=(4,20))
 
-            tk.Label(main_frame, text="Serial Key:", font=("Consolas", 11), bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
-            serial_ent = tk.Entry(main_frame, font=("Consolas", 14), bg="#1a1f3a", fg="#fff",
-                                  insertbackground="#ffd700", relief="flat", bd=4)
+            tk.Label(main_frame, text="Serial Key:", font=("Consolas", 11), bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
+            serial_ent = tk.Entry(main_frame, font=("Consolas", 14), bg="#14161e", fg="#fff",
+                                  insertbackground="#f6c453", relief="flat", bd=4)
             serial_ent.pack(fill="x", ipady=10, pady=(4,0))
 
             act_status = tk.StringVar(value="")
             tk.Label(main_frame, textvariable=act_status, font=("Consolas", 9),
-                     bg="#0a0e27", fg="#e74c3c").pack(anchor="w", pady=(4,0))
+                     bg="#0a0b11", fg="#e74c3c").pack(anchor="w", pady=(4,0))
 
             def activate():
                 key = serial_ent.get().strip()
@@ -1392,10 +1407,10 @@ class AuthWindow:
 
             serial_ent.bind("<Return>", lambda e: activate())
 
-            btn_frame = tk.Frame(main_frame, bg="#0a0e27")
+            btn_frame = tk.Frame(main_frame, bg="#0a0b11")
             btn_frame.pack(fill="x", pady=(30, 0))
             btn_frame.grid_columnconfigure(0, weight=1)
-            act_btn = tk.Button(btn_frame, text="ACTIVATE", font=("Consolas", 13, "bold"), bg="#2ecc71", fg="white",
+            act_btn = tk.Button(btn_frame, text="ACTIVATE", font=("Consolas", 13, "bold"), bg="#54e0a2", fg="white",
                       relief="flat", command=activate)
             act_btn.pack(fill="x", ipady=14, pady=(0, 10))
             tk.Button(btn_frame, text="Cancel", font=("Consolas", 11), bg="#e74c3c", fg="white",
@@ -1838,16 +1853,16 @@ class GameLauncherWindow:
         else:
             self.root = tk.Tk()
         self.root.title("Pato Tool Bot — Select Game")
-        self.root.configure(bg="#0a0e27")
+        self.root.configure(bg="#0a0b11")
         self.root.resizable(False, False)
         _set_icon(self.root)
         self._build_ui()
         _center_win(self.root, 620, 640)
 
     def _build_ui(self):
-        C = {"bg": "#0a0e27", "bg2": "#1a1f3a", "bg3": "#2a3f5f",
-             "gold": "#ffd700", "text": "#ffffff", "dim": "#8b9dc3",
-             "green": "#2ecc71", "red": "#e74c3c", "info": "#3498db",
+        C = {"bg": "#0a0b11", "bg2": "#14161e", "bg3": "#222633",
+             "gold": "#f6c453", "text": "#ffffff", "dim": "#8b91a8",
+             "green": "#54e0a2", "red": "#e74c3c", "info": "#3498db",
              "orange": "#f39c12", "locked": "#2c2c3e"}
 
         BUY_URLS = {
@@ -1859,7 +1874,8 @@ class GameLauncherWindow:
         hdr = tk.Frame(self.root, bg=C["bg2"], height=90)
         hdr.pack(fill="x")
         hdr.pack_propagate(False)
-        tk.Label(hdr, text="🦆", font=("Arial", 40), bg=C["bg2"], fg=C["gold"]).place(x=20, rely=0.5, anchor="w")
+        tk.Frame(hdr, bg=C["gold"], height=2).pack(side="bottom", fill="x")
+        tk.Label(hdr, text="🦆", font=("Segoe UI", 40), bg=C["bg2"], fg=C["gold"]).place(x=20, rely=0.5, anchor="w")
         tk.Label(hdr, text="SELECT GAME", font=("Consolas", 18, "bold"),
                  bg=C["bg2"], fg=C["gold"]).place(relx=0.5, y=28, anchor="center")
         tk.Label(hdr, text=f"Welcome, {self.username}  •  Choose a game to launch the bot",
@@ -1888,9 +1904,9 @@ class GameLauncherWindow:
             # ── Left: emoji ──
             left = tk.Frame(card, bg=card_bg)
             left.pack(side="left", padx=18, pady=6)
-            emoji_color = cfg["color"] if has_license else "#555577"
+            emoji_color = cfg["color"] if has_license else "#454b63"
             tk.Label(left, text=cfg["emoji"] if has_license else "🔒",
-                     font=("Arial", 36), bg=card_bg, fg=emoji_color).pack()
+                     font=("Segoe UI", 36), bg=card_bg, fg=emoji_color).pack()
 
             # ── Mid: name + status ──
             mid = tk.Frame(card, bg=card_bg)
@@ -1921,9 +1937,12 @@ class GameLauncherWindow:
                     return _launch
 
                 btn = tk.Button(right, text="▶  LAUNCH", font=("Consolas", 11, "bold"),
-                                bg=C["green"], fg="white", relief="flat", cursor="hand2",
+                                bg=C["green"], fg="#0a0b11", relief="flat", cursor="hand2",
+                                activebackground="#7bf0bd", activeforeground="#0a0b11",
                                 state="disabled", command=make_launch(game_key),
                                 padx=12, pady=8)
+                btn.bind("<Enter>", lambda e, b=btn: b["state"] == "normal" and b.configure(bg="#7bf0bd"))
+                btn.bind("<Leave>", lambda e, b=btn: b.configure(bg=C["green"]))
                 btn.pack()
                 self._launch_btns[game_key] = btn
             else:
@@ -1933,12 +1952,16 @@ class GameLauncherWindow:
                         webbrowser.open(url)
                     return _buy
 
-                tk.Button(right, text="🛒  BUY", font=("Consolas", 11, "bold"),
-                          bg=C["orange"], fg="white", relief="flat", cursor="hand2",
-                          command=make_buy(), padx=12, pady=8).pack()
+                buy_btn = tk.Button(right, text="🛒  BUY", font=("Consolas", 11, "bold"),
+                          bg=C["orange"], fg="#231a06", relief="flat", cursor="hand2",
+                          activebackground="#f7b733", activeforeground="#231a06",
+                          command=make_buy(), padx=12, pady=8)
+                buy_btn.bind("<Enter>", lambda e, b=buy_btn: b.configure(bg="#f7b733"))
+                buy_btn.bind("<Leave>", lambda e, b=buy_btn: b.configure(bg=C["orange"]))
+                buy_btn.pack()
 
         # ── Activate Serial Key section ──
-        sep = tk.Frame(self.root, bg="#2a3f5f", height=1)
+        sep = tk.Frame(self.root, bg="#222633", height=1)
         sep.pack(fill="x", padx=20, pady=(8, 0))
 
         act_frame = tk.Frame(self.root, bg=C["bg"])
@@ -1952,11 +1975,11 @@ class GameLauncherWindow:
 
         serial_var = tk.StringVar()
         serial_entry = tk.Entry(input_row, textvariable=serial_var,
-                                font=("Consolas", 12), bg="#1a1f3a", fg="#fff",
+                                font=("Consolas", 12), bg="#14161e", fg="#fff",
                                 insertbackground=C["gold"], relief="flat", bd=4)
         serial_entry.pack(side="left", fill="x", expand=True, ipady=8, padx=(0, 8))
         serial_entry.insert(0, "PATO-XXXX-XXXX-XXXX")
-        serial_entry.config(fg="#555577")
+        serial_entry.config(fg="#454b63")
 
         def _on_focus_in(e):
             if serial_entry.get() == "PATO-XXXX-XXXX-XXXX":
@@ -1966,7 +1989,7 @@ class GameLauncherWindow:
         def _on_focus_out(e):
             if not serial_entry.get().strip():
                 serial_entry.insert(0, "PATO-XXXX-XXXX-XXXX")
-                serial_entry.config(fg="#555577")
+                serial_entry.config(fg="#454b63")
 
         serial_entry.bind("<FocusIn>", _on_focus_in)
         serial_entry.bind("<FocusOut>", _on_focus_out)
@@ -2115,8 +2138,8 @@ class GameLauncherWindow:
             cfg = GAME_CONFIGS[game_key]
             running = game_states.get(game_key, False)
             if running:
-                status_lbl.config(text=f"🟢 {cfg['name']} is running", fg="#2ecc71")
-                btn.config(state="normal", bg="#2ecc71")
+                status_lbl.config(text=f"🟢 {cfg['name']} is running", fg="#54e0a2")
+                btn.config(state="normal", bg="#54e0a2")
             elif notepad_open:
                 status_lbl.config(text="📝 Notepad detected — launch without game", fg="#f39c12")
                 btn.config(state="normal", bg="#f39c12")
@@ -2229,7 +2252,7 @@ class AutoClickBot:
         self.root.geometry("1800x1050")
         _set_icon(self.root)
         self.root.minsize(1200, 700)
-        self.root.configure(bg="#0a0e27")
+        self.root.configure(bg="#0a0b11")
         self.root.resizable(True, True)
 
         self.running = False
@@ -2445,15 +2468,15 @@ class AutoClickBot:
     def _build_ui(self):
         # Color scheme moderno
         self.colors = {
-            'bg_dark': '#0a0e27',
-            'bg_medium': '#1a1f3a',
-            'bg_light': '#2a3f5f',
-            'accent': '#ffd700',
-            'success': '#2ecc71',
+            'bg_dark': '#0a0b11',
+            'bg_medium': '#14161e',
+            'bg_light': '#222633',
+            'accent': '#f6c453',
+            'success': '#54e0a2',
             'danger': '#e74c3c',
             'info': '#3498db',
             'text': '#ffffff',
-            'text_dim': '#a0a0a0'
+            'text_dim': '#9298ac'
         }
         
         # ============= TOP BAR =============
@@ -2464,7 +2487,7 @@ class AutoClickBot:
         left_section = tk.Frame(top_bar, bg=self.colors['bg_medium'])
         left_section.pack(side="left", fill="y", padx=20)
         
-        tk.Label(left_section, text="🦆", font=("Arial", 36), 
+        tk.Label(left_section, text="🦆", font=("Segoe UI", 36), 
               bg=self.colors['bg_medium'], fg=self.colors['accent']).pack(side="left", padx=(0, 15))
         
         title_frame = tk.Frame(left_section, bg=self.colors['bg_medium'])
@@ -2481,7 +2504,7 @@ class AutoClickBot:
         user_frame = tk.Frame(right_section, bg=self.colors['bg_light'], relief="flat", padx=6, pady=4)
         user_frame.pack(side="right", padx=5, pady=10)
         
-        tk.Label(user_frame, text="👤", font=("Arial", 16),
+        tk.Label(user_frame, text="👤", font=("Segoe UI", 16),
               bg=self.colors['bg_light'], fg=self.colors['accent']).pack(side="left", padx=(10, 5))
         
         user_info = tk.Frame(user_frame, bg=self.colors['bg_light'])
@@ -2594,11 +2617,11 @@ class AutoClickBot:
         toolbar = tk.Frame(seq_header, bg=self.colors['bg_light'])
         toolbar.pack(side="right", padx=15)
         
-        tk.Button(toolbar, text="💾", font=("Arial", 14), bg=self.colors['info'], fg="white",
+        tk.Button(toolbar, text="💾", font=("Segoe UI", 14), bg=self.colors['info'], fg="white",
                  relief="flat", cursor="hand2", command=self._save_sequence, padx=8, pady=2).pack(side="left", padx=2)
-        tk.Button(toolbar, text="📂", font=("Arial", 14), bg=self.colors['info'], fg="white",
+        tk.Button(toolbar, text="📂", font=("Segoe UI", 14), bg=self.colors['info'], fg="white",
                  relief="flat", cursor="hand2", command=self._load_sequence, padx=8, pady=2).pack(side="left", padx=2)
-        tk.Button(toolbar, text="🗑", font=("Arial", 14), bg="#c0392b", fg="white",
+        tk.Button(toolbar, text="🗑", font=("Segoe UI", 14), bg="#c0392b", fg="white",
                  relief="flat", cursor="hand2", command=self._clear_sequence, padx=8, pady=2).pack(side="left", padx=2)
         
         canvas_frame = tk.Frame(center_panel, bg=self.colors['bg_dark'])
@@ -2613,10 +2636,10 @@ class AutoClickBot:
         self.canvas.pack(side="left", fill="both", expand=True)
 
         # Pretty slim scrollbar
-        _sb_frame = tk.Frame(canvas_container, bg="#1a1f3a", width=6)
+        _sb_frame = tk.Frame(canvas_container, bg="#14161e", width=6)
         _sb_frame.pack(side="right", fill="y")
         _sb_frame.pack_propagate(False)
-        self._sb_thumb = tk.Frame(_sb_frame, bg="#ffd700", cursor="hand2")
+        self._sb_thumb = tk.Frame(_sb_frame, bg="#f6c453", cursor="hand2")
 
         def _update_scrollbar(*_):
             try:
@@ -2989,7 +3012,7 @@ class AutoClickBot:
                 except Exception as e:
                     self.log(f"Resolution error: {e}")
             tk.Button(f, text="Apply", font=("Segoe UI", 8, "bold"),
-                      bg=self.colors["accent"], fg="#0a0e27", relief="flat",
+                      bg=self.colors["accent"], fg="#0a0b11", relief="flat",
                       cursor="hand2", command=apply_res, padx=8).pack(side="left", padx=4)
             res_combo.bind("<<ComboboxSelected>>", apply_res)
         row(body, "Base resolution", make_res)
@@ -3099,7 +3122,7 @@ class AutoClickBot:
             import os, psutil
             proc = psutil.Process(os.getpid())
             mb = proc.memory_info().rss / 1024 / 1024
-            color = "#ff5555" if mb > 1500 else "#ffdd44" if mb > 800 else "#55ff88"
+            color = "#ff7a7a" if mb > 1500 else "#ffdd44" if mb > 800 else "#55ff88"
             self._ram_label.config(text=f"RAM used by bot: {mb:.0f} MB", fg=color)
         except Exception:
             self._ram_label.config(text="RAM: (psutil not installed)")
@@ -3237,7 +3260,7 @@ class AutoClickBot:
 
         # ── Accent colours cycling per category ──────────────────────────
         CAT_COLORS = ["#3498db", "#9b59b6", "#e67e22", "#e74c3c",
-                      "#1abc9c", "#f39c12", "#2ecc71", "#e91e63"]
+                      "#1abc9c", "#f39c12", "#54e0a2", "#e91e63"]
 
         def make_load(snap, cname, cres="1920x1080", cmeta=None):
             def load():
@@ -3291,7 +3314,7 @@ class AutoClickBot:
             cnt = len(cat_data["configs"])
             tk.Label(hdr_frame, text=f"  {cnt} config{'s' if cnt != 1 else ''}  ",
                      font=("Consolas", 9), bg=accent,
-                     fg="#0a0e27", padx=6, pady=2).pack(side="right", padx=12, pady=10)
+                     fg="#0a0b11", padx=6, pady=2).pack(side="right", padx=12, pady=10)
 
             # Thin separator line below header
             tk.Frame(self._cfg_inner, bg=accent, height=1).pack(fill="x", padx=0, pady=(0, 8))
@@ -3313,7 +3336,7 @@ class AutoClickBot:
                 body = tk.Frame(card, bg=self.colors['bg_medium'])
                 body.pack(fill="both", expand=True, padx=16, pady=12)
 
-                tk.Label(body, text=cfg.get("emoji", "\u2699\ufe0f"), font=("Arial", 28),
+                tk.Label(body, text=cfg.get("emoji", "\u2699\ufe0f"), font=("Segoe UI", 28),
                          bg=self.colors['bg_medium'], fg=accent).pack(anchor="w")
                 tk.Label(body, text=cfg.get("name", "Unnamed"), font=("Segoe UI", 11, "bold"),
                          bg=self.colors['bg_medium'], fg=self.colors['text']).pack(anchor="w", pady=(4, 2))
@@ -3762,30 +3785,30 @@ class AutoClickBot:
         result = [current]
         win = Toplevel(self.root)
         win.title("Comma Mode  (default: decimal)")
-        win.configure(bg="#0a0e27")
+        win.configure(bg="#0a0b11")
         win.resizable(False, False)
         win.transient(self.root)
         win.grab_set()
         win.geometry("420x200")
 
         tk.Label(win, text="How should comma ( , ) be read?",
-                 font=("Consolas", 11, "bold"), bg="#0a0e27", fg="#ffd700").pack(pady=(18,8), padx=20)
+                 font=("Consolas", 11, "bold"), bg="#0a0b11", fg="#f6c453").pack(pady=(18,8), padx=20)
 
         var = tk.StringVar(value=current if current else "decimal")
-        f = tk.Frame(win, bg="#0a0e27")
+        f = tk.Frame(win, bg="#0a0b11")
         f.pack(padx=30, pady=4, fill="x")
         for val, label in [("decimal",   "Decimal point  →  20,540 = 20.540"),
                             ("thousands", "Thousands sep  →  20,540 = 20540")]:
             tk.Radiobutton(f, text=label, variable=var, value=val,
-                           font=("Consolas", 10), bg="#0a0e27", fg="#fff",
-                           selectcolor="#1a1f3a", activebackground="#0a0e27",
-                           activeforeground="#ffd700").pack(anchor="w", pady=3)
+                           font=("Consolas", 10), bg="#0a0b11", fg="#fff",
+                           selectcolor="#14161e", activebackground="#0a0b11",
+                           activeforeground="#f6c453").pack(anchor="w", pady=3)
 
         def confirm():
             result[0] = var.get()
             win.destroy()
         tk.Button(win, text="OK", font=("Consolas", 11, "bold"),
-                  bg="#2ecc71", fg="white", relief="flat",
+                  bg="#54e0a2", fg="white", relief="flat",
                   command=confirm).pack(pady=14, ipadx=20, ipady=4)
         win.update_idletasks()
         self._autosize_dialog(win, min_w=380, min_h=180)
@@ -4823,22 +4846,22 @@ class AutoClickBot:
         sel_win = Toplevel(self.root)
         sel_win.title(title)
         sel_win.transient(self.root)
-        sel_win.configure(bg="#0a0e27")
+        sel_win.configure(bg="#0a0b11")
         sel_win.grab_set()
         selected = [None]
         
-        main_frame = tk.Frame(sel_win, bg="#0a0e27")
+        main_frame = tk.Frame(sel_win, bg="#0a0b11")
         main_frame.pack(fill="both", expand=True, padx=15, pady=15)
         main_frame.grid_rowconfigure(1, weight=1)
         main_frame.grid_columnconfigure(0, weight=1)
         
-        tk.Label(main_frame, text="Select variable:", font=("Consolas", 12, "bold"), bg="#0a0e27", fg="#ffd700").grid(row=0, column=0, pady=(0,10))
-        listbox = tk.Listbox(main_frame, height=12, font=("Consolas", 11), bg="#1a1f3a", fg="#fff", selectmode="single")
+        tk.Label(main_frame, text="Select variable:", font=("Consolas", 12, "bold"), bg="#0a0b11", fg="#f6c453").grid(row=0, column=0, pady=(0,10))
+        listbox = tk.Listbox(main_frame, height=12, font=("Consolas", 11), bg="#14161e", fg="#fff", selectmode="single")
         for v in vars_list:
             listbox.insert(tk.END, v)
         listbox.grid(row=1, column=0, sticky="nsew", pady=(0,15))
         
-        btn_frame = tk.Frame(main_frame, bg="#0a0e27")
+        btn_frame = tk.Frame(main_frame, bg="#0a0b11")
         btn_frame.grid(row=2, column=0, sticky="ew")
         btn_frame.grid_columnconfigure(0, weight=1)
         btn_frame.grid_columnconfigure(1, weight=1)
@@ -4849,7 +4872,7 @@ class AutoClickBot:
                 sel_win.destroy()
         def cancel():
             sel_win.destroy()
-        tk.Button(btn_frame, text="Confirm", command=ok, font=("Consolas", 11, "bold"), bg="#2ecc71", fg="white", relief="flat", padx=30, pady=8).grid(row=0, column=0, sticky="ew", padx=(0,5))
+        tk.Button(btn_frame, text="Confirm", command=ok, font=("Consolas", 11, "bold"), bg="#54e0a2", fg="white", relief="flat", padx=30, pady=8).grid(row=0, column=0, sticky="ew", padx=(0,5))
         tk.Button(btn_frame, text="Cancel", command=cancel, font=("Consolas", 11, "bold"), bg="#e74c3c", fg="white", relief="flat", padx=30, pady=8).grid(row=0, column=1, sticky="ew", padx=(5,0))
         self._autosize_dialog(sel_win, min_w=360, min_h=280)
         sel_win.wait_window()
@@ -5009,52 +5032,52 @@ class AutoClickBot:
             if name is None: return
             type_win = Toplevel(self.root)
             type_win.title("Select Type")
-            type_win.configure(bg="#0a0e27")
+            type_win.configure(bg="#0a0b11")
             type_win.transient(self.root)
             type_win.grab_set()
             
-            main_frame = tk.Frame(type_win, bg="#0a0e27")
+            main_frame = tk.Frame(type_win, bg="#0a0b11")
             main_frame.pack(fill="both", expand=True, padx=40, pady=20)
             main_frame.grid_columnconfigure(0, weight=1)
             
             tk.Label(main_frame, text="Select Variable Type:", font=("Consolas", 12, "bold"),
-                     bg="#0a0e27", fg="#ffd700").pack(pady=(0,15))
+                     bg="#0a0b11", fg="#f6c453").pack(pady=(0,15))
             var_type = tk.StringVar(value="int")
             for t in ["int", "float", "bool", "string"]:
                 tk.Radiobutton(main_frame, text=t, variable=var_type, value=t,
-                               font=("Consolas", 11), bg="#0a0e27", fg="#fff",
-                               selectcolor="#1a1f3a").pack(anchor="w", pady=5)
+                               font=("Consolas", 11), bg="#0a0b11", fg="#fff",
+                               selectcolor="#14161e").pack(anchor="w", pady=5)
             def confirm():
                 type_win.destroy()
             tk.Button(main_frame, text="OK", font=("Consolas", 11, "bold"),
-                      bg="#2ecc71", fg="white", relief="flat", command=confirm).pack(pady=(15,0), ipady=5, fill="x")
+                      bg="#54e0a2", fg="white", relief="flat", command=confirm).pack(pady=(15,0), ipady=5, fill="x")
             self._autosize_dialog(type_win, min_w=260, min_h=220)
             type_win.wait_window()
             selected_type = var_type.get()
             if selected_type == "bool":
                 bool_win = Toplevel(self.root)
                 bool_win.title("Set Value")
-                bool_win.configure(bg="#0a0e27")
+                bool_win.configure(bg="#0a0b11")
                 bool_win.transient(self.root)
                 bool_win.grab_set()
                 
-                main_frame_bool = tk.Frame(bool_win, bg="#0a0e27")
+                main_frame_bool = tk.Frame(bool_win, bg="#0a0b11")
                 main_frame_bool.pack(fill="both", expand=True, padx=40, pady=20)
                 main_frame_bool.grid_columnconfigure(0, weight=1)
                 
                 tk.Label(main_frame_bool, text="Initial Value:", font=("Consolas", 12, "bold"),
-                         bg="#0a0e27", fg="#ffd700").pack(pady=(0,15))
+                         bg="#0a0b11", fg="#f6c453").pack(pady=(0,15))
                 bool_val = tk.StringVar(value="true")
                 tk.Radiobutton(main_frame_bool, text="True", variable=bool_val, value="true",
-                               font=("Consolas", 11), bg="#0a0e27", fg="#fff",
-                               selectcolor="#1a1f3a").pack(anchor="w", pady=5)
+                               font=("Consolas", 11), bg="#0a0b11", fg="#fff",
+                               selectcolor="#14161e").pack(anchor="w", pady=5)
                 tk.Radiobutton(main_frame_bool, text="False", variable=bool_val, value="false",
-                               font=("Consolas", 11), bg="#0a0e27", fg="#fff",
-                               selectcolor="#1a1f3a").pack(anchor="w", pady=5)
+                               font=("Consolas", 11), bg="#0a0b11", fg="#fff",
+                               selectcolor="#14161e").pack(anchor="w", pady=5)
                 def confirm_bool():
                     bool_win.destroy()
                 tk.Button(main_frame_bool, text="OK", font=("Consolas", 11, "bold"),
-                          bg="#2ecc71", fg="white", relief="flat", command=confirm_bool).pack(pady=(10,0), ipady=5, fill="x")
+                          bg="#54e0a2", fg="white", relief="flat", command=confirm_bool).pack(pady=(10,0), ipady=5, fill="x")
                 self._autosize_dialog(bool_win, min_w=240, min_h=180)
                 bool_win.wait_window()
                 value = bool_val.get() == "true"
@@ -5451,66 +5474,66 @@ class AutoClickBot:
         result = [None]
         win = Toplevel(self.root)
         win.title("Config Details")
-        win.configure(bg="#0a0e27")
+        win.configure(bg="#0a0b11")
         win.transient(self.root)
         win.grab_set()
         win.resizable(False, False)
 
         ICONS = ["⚔️","🛡️","💰","🔄","🏆","🎯","🤖","⚡","🔥","🌟","🛒","📦","🗡️","💎","🎮"]
 
-        f = tk.Frame(win, bg="#0a0e27")
+        f = tk.Frame(win, bg="#0a0b11")
         f.pack(fill="both", expand=True, padx=30, pady=20)
 
         tk.Label(f, text="💾  Save Config", font=("Segoe UI", 13, "bold"),
-                 bg="#0a0e27", fg="#ffd700").pack(pady=(0, 16))
+                 bg="#0a0b11", fg="#f6c453").pack(pady=(0, 16))
 
         # Title
         tk.Label(f, text="Title", font=("Segoe UI", 10, "bold"),
-                 bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
+                 bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
         title_var = tk.StringVar(value=prefill.get("name", ""))
         tk.Entry(f, textvariable=title_var, font=("Consolas", 12),
-                 bg="#1a1f3a", fg="#fff", insertbackground="#ffd700",
+                 bg="#14161e", fg="#fff", insertbackground="#f6c453",
                  relief="flat").pack(fill="x", ipady=8, pady=(4, 14))
 
         # Description
         tk.Label(f, text="Description", font=("Segoe UI", 10, "bold"),
-                 bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
+                 bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
         desc_txt = tk.Text(f, height=3, font=("Consolas", 11),
-                           bg="#1a1f3a", fg="#fff", insertbackground="#ffd700",
+                           bg="#14161e", fg="#fff", insertbackground="#f6c453",
                            relief="flat", wrap="word")
         desc_txt.insert("1.0", prefill.get("description", ""))
         desc_txt.pack(fill="x", pady=(4, 14))
 
         # Icon picker
         tk.Label(f, text="Icon", font=("Segoe UI", 10, "bold"),
-                 bg="#0a0e27", fg="#8b9dc3").pack(anchor="w")
+                 bg="#0a0b11", fg="#8b91a8").pack(anchor="w")
         current_icon = prefill.get("icon", ICONS[0])
         if current_icon not in ICONS:
             current_icon = ICONS[0]
         icon_var = tk.StringVar(value=current_icon)
-        icon_grid = tk.Frame(f, bg="#0a0e27")
+        icon_grid = tk.Frame(f, bg="#0a0b11")
         icon_grid.pack(fill="x", pady=(4, 16))
 
         selected_btn = [None]
         def _pick_icon(ic, btn):
             icon_var.set(ic)
             if selected_btn[0]:
-                selected_btn[0].config(bg="#1a1f3a", relief="flat")
-            btn.config(bg="#ffd700", relief="flat")
+                selected_btn[0].config(bg="#14161e", relief="flat")
+            btn.config(bg="#f6c453", relief="flat")
             selected_btn[0] = btn
 
         for i, ic in enumerate(ICONS):
-            btn = tk.Button(icon_grid, text=ic, font=("Arial", 16),
-                            bg="#1a1f3a", fg="white", relief="flat",
+            btn = tk.Button(icon_grid, text=ic, font=("Segoe UI", 16),
+                            bg="#14161e", fg="white", relief="flat",
                             cursor="hand2", width=2, pady=2)
             btn.config(command=lambda b=btn, ico=ic: _pick_icon(ico, b))
             btn.grid(row=i//8, column=i%8, padx=2, pady=2)
             if ic == current_icon:
-                btn.config(bg="#ffd700")
+                btn.config(bg="#f6c453")
                 selected_btn[0] = btn
 
         # Buttons
-        btn_row = tk.Frame(f, bg="#0a0e27")
+        btn_row = tk.Frame(f, bg="#0a0b11")
         btn_row.pack(fill="x", pady=(4, 0))
         btn_row.grid_columnconfigure(0, weight=1)
         btn_row.grid_columnconfigure(1, weight=1)
@@ -5527,10 +5550,10 @@ class AutoClickBot:
             win.destroy()
 
         tk.Button(btn_row, text="Save", font=("Segoe UI", 10, "bold"),
-                  bg="#ffd700", fg="#0a0e27", relief="flat", cursor="hand2",
+                  bg="#f6c453", fg="#0a0b11", relief="flat", cursor="hand2",
                   command=_save).grid(row=0, column=0, sticky="ew", padx=(0,4), ipady=8)
         tk.Button(btn_row, text="Cancel", font=("Segoe UI", 10),
-                  bg="#2a2f4a", fg="#8b9dc3", relief="flat", cursor="hand2",
+                  bg="#1e212c", fg="#8b91a8", relief="flat", cursor="hand2",
                   command=_cancel).grid(row=0, column=1, sticky="ew", padx=(4,0), ipady=8)
 
         win.update_idletasks()
@@ -5543,20 +5566,20 @@ class AutoClickBot:
             return
         win = Toplevel(self.root)
         win.title("Clear Sequence")
-        win.configure(bg="#0a0e27")
+        win.configure(bg="#0a0b11")
         win.resizable(False, False)
         win.transient(self.root)
         win.grab_set()
 
-        f = tk.Frame(win, bg="#0a0e27")
+        f = tk.Frame(win, bg="#0a0b11")
         f.pack(fill="both", expand=True, padx=30, pady=24)
 
         tk.Label(f, text="🗑  Clear Sequence?", font=("Segoe UI", 13, "bold"),
-                 bg="#0a0e27", fg="#e74c3c").pack(pady=(0, 8))
+                 bg="#0a0b11", fg="#e74c3c").pack(pady=(0, 8))
         tk.Label(f, text=f"This will delete all {len(self.sequence)} action(s).\nThis cannot be undone.",
-                 font=("Segoe UI", 10), bg="#0a0e27", fg="#8b9dc3", justify="center").pack(pady=(0, 20))
+                 font=("Segoe UI", 10), bg="#0a0b11", fg="#8b91a8", justify="center").pack(pady=(0, 20))
 
-        btn_row = tk.Frame(f, bg="#0a0e27")
+        btn_row = tk.Frame(f, bg="#0a0b11")
         btn_row.pack(fill="x")
         btn_row.grid_columnconfigure(0, weight=1)
         btn_row.grid_columnconfigure(1, weight=1)
@@ -5571,7 +5594,7 @@ class AutoClickBot:
                   bg="#e74c3c", fg="white", relief="flat", cursor="hand2",
                   command=_do_clear).grid(row=0, column=0, sticky="ew", padx=(0, 4), ipady=8)
         tk.Button(btn_row, text="Cancel", font=("Segoe UI", 10),
-                  bg="#2a2f4a", fg="#8b9dc3", relief="flat", cursor="hand2",
+                  bg="#1e212c", fg="#8b91a8", relief="flat", cursor="hand2",
                   command=win.destroy).grid(row=0, column=1, sticky="ew", padx=(4, 0), ipady=8)
 
         win.update_idletasks()
@@ -5632,7 +5655,7 @@ class AutoClickBot:
         ov.attributes("-topmost", True)
         ov.attributes("-alpha", 0.88)
         ov.geometry("420x320+20+20")
-        ov.configure(bg="#0a0e1a")
+        ov.configure(bg="#070810")
         # Make overlay click-through for focus — never steals focus from game/notepad
         try:
             import ctypes as _ct
@@ -5647,46 +5670,46 @@ class AutoClickBot:
         except Exception:
             pass
 
-        hdr = tk.Frame(ov, bg="#1a1f3a", height=28, cursor="fleur")
+        hdr = tk.Frame(ov, bg="#14161e", height=28, cursor="fleur")
         hdr.pack(fill="x", side="top")
         hdr.pack_propagate(False)
         tk.Label(hdr, text="🦆  Pato Tool Bot  —  Running",
-                 bg="#1a1f3a", fg="#ffd700",
+                 bg="#14161e", fg="#f6c453",
                  font=("Segoe UI", 9, "bold")).pack(side="left", padx=8, pady=4)
         self._ov_iter_var   = tk.StringVar(value="Cycle: 0")
         self._ov_status_var = tk.StringVar(value="● RUNNING")
         tk.Label(hdr, textvariable=self._ov_status_var,
-                 bg="#1a1f3a", fg="#2ecc71",
+                 bg="#14161e", fg="#54e0a2",
                  font=("Segoe UI", 8, "bold")).pack(side="right", padx=6)
         tk.Label(hdr, textvariable=self._ov_iter_var,
-                 bg="#1a1f3a", fg="#8b9dc3",
+                 bg="#14161e", fg="#8b91a8",
                  font=("Segoe UI", 8)).pack(side="right", padx=4)
-        close_btn = tk.Label(hdr, text="✕", bg="#1a1f3a", fg="#666",
+        close_btn = tk.Label(hdr, text="✕", bg="#14161e", fg="#666",
                              font=("Segoe UI", 10), cursor="hand2", padx=6)
         close_btn.pack(side="right")
         close_btn.bind("<Button-1>", lambda e: self._hide_run_overlay())
 
-        log_frame = tk.Frame(ov, bg="#0a0e1a")
+        log_frame = tk.Frame(ov, bg="#070810")
         log_frame.pack(fill="both", expand=True, padx=2, pady=(0,2))
-        self._ov_log = tk.Text(log_frame, bg="#0a0e1a", fg="#c8d3f0",
+        self._ov_log = tk.Text(log_frame, bg="#070810", fg="#c8d3f0",
                                font=("Consolas", 8), bd=0, highlightthickness=0,
                                state="disabled", wrap="word", cursor="arrow")
         ov_scroll = tk.Scrollbar(log_frame, command=self._ov_log.yview,
-                                  bg="#0a0e1a", troughcolor="#0a0e1a",
-                                  activebackground="#ffd700", width=6)
+                                  bg="#070810", troughcolor="#070810",
+                                  activebackground="#f6c453", width=6)
         self._ov_log.configure(yscrollcommand=ov_scroll.set)
         ov_scroll.pack(side="right", fill="y")
         self._ov_log.pack(side="left", fill="both", expand=True, padx=(4,0))
         self._ov_log.tag_config("ts",     foreground="#3a4a6a")
-        self._ov_log.tag_config("gold",   foreground="#ffd700", font=("Consolas", 8, "bold"))
-        self._ov_log.tag_config("green",  foreground="#2ecc71")
+        self._ov_log.tag_config("gold",   foreground="#f6c453", font=("Consolas", 8, "bold"))
+        self._ov_log.tag_config("green",  foreground="#54e0a2")
         self._ov_log.tag_config("red",    foreground="#e74c3c")
         self._ov_log.tag_config("dim",    foreground="#556070")
         self._ov_log.tag_config("cyan",   foreground="#00bcd4")
         self._ov_log.tag_config("yellow", foreground="#f1c40f")
         self._ov_log.tag_config("action", foreground="#a78bfa", font=("Consolas", 8, "bold"))
 
-        grip = tk.Label(ov, text="⠿", bg="#0a0e1a", fg="#2a3050",
+        grip = tk.Label(ov, text="⠿", bg="#070810", fg="#2a3050",
                         font=("Segoe UI", 9), cursor="size_nw_se")
         grip.place(relx=1.0, rely=1.0, anchor="se")
 
@@ -5931,8 +5954,8 @@ class AutoClickBot:
 
         def create_frame(act, level=0, is_then=False, is_else=False, parent_frame=None, parent_list=None, index=None):
             bg_color = "#0f1824" if level % 2 == 0 else "#0a1420"
-            if is_then: bg_color = "#1a3a1a"
-            if is_else: bg_color = "#3a1a1a"
+            if is_then: bg_color = "#12231a"
+            if is_else: bg_color = "#241314"
             parent = self.inner if parent_frame is None else parent_frame
             pad_x = (level*28 + 12, 12) if parent_frame is None or not (is_then or is_else) else (8, 8)
             frame = tk.Frame(parent, bg=bg_color, bd=1, relief="solid", pady=6, padx=12)
@@ -5951,7 +5974,7 @@ class AutoClickBot:
             header_frame = tk.Frame(frame, bg=bg_color)
             header_frame.pack(fill="x", expand=False)
             handle = tk.Label(header_frame, text="≡", font=("Consolas", 14, "bold"),
-                              bg="#2c3e50", fg="#bdc3c7", width=2, cursor="fleur")
+                              bg="#1c2230", fg="#bdc3c7", width=2, cursor="fleur")
             handle.pack(side="left", padx=(0,10))
 
             t = act["type"]
@@ -5966,7 +5989,7 @@ class AutoClickBot:
             elif t == "Move Mouse & Scroll":
                 color = "#7ec8e3"
             elif t in ("Clear & Write Price", "Clear & Write Text"):
-                color = "#ffd700"   # gold — price
+                color = "#f6c453"   # gold — price
             elif "Variable" in t or "Bool" in t or "Append" in t:
                 color = "#88ffcc"   # mint — variables
             elif "Loop" in t or "Counter" in t:
@@ -5974,11 +5997,11 @@ class AutoClickBot:
             elif "If " in t or "Else" in t or "Switch" in t:
                 color = "#ffdd44"   # yellow — conditions
             elif "Comment" in t:
-                color = "#95a5a6"   # dim — comments
+                color = "#8b91a8"   # dim — comments
             elif t in ("Screenshot & Save",):
                 color = "#e8a0e8"   # purple — screenshot
             elif t in ("Break", "Return / End"):
-                color = "#ff5555"   # red — control flow
+                color = "#ff7a7a"   # red — control flow
             else:
                 color = "#e0e0e0"
 
@@ -6013,12 +6036,12 @@ class AutoClickBot:
 
             p = act.get("params", {})
             if "body" in p:
-                body_frame = tk.Frame(frame, bg="#1a2a3a", bd=2, relief="ridge")
+                body_frame = tk.Frame(frame, bg="#10131b", bd=2, relief="ridge")
                 body_frame.pack(fill="both", expand=True, pady=(8,4), padx=(8, 8))
-                body_header = tk.Frame(body_frame, bg="#1a2a3a")
+                body_header = tk.Frame(body_frame, bg="#10131b")
                 body_header.pack(fill="x", padx=10, pady=4)
-                tk.Label(body_header, text="▼ LOOP BODY", bg="#1a2a3a", fg="#88ccff", font=("Consolas", 10, "bold")).pack(side="left")
-                tk.Button(body_header, text="+", font=("Consolas", 9, "bold"), bg="#2ecc71", fg="white", width=2, relief="flat",
+                tk.Label(body_header, text="▼ LOOP BODY", bg="#10131b", fg="#88ccff", font=("Consolas", 10, "bold")).pack(side="left")
+                tk.Button(body_header, text="+", font=("Consolas", 9, "bold"), bg="#54e0a2", fg="white", width=2, relief="flat",
                           command=lambda plist=p["body"]: self._set_target_and_show_menu(plist, "logic")).pack(side="right", padx=5)
                 body_items = tk.Frame(body_frame, bg="#0d1d2d")
                 body_items.pack(fill="both", expand=True, padx=6, pady=4)
@@ -6039,12 +6062,12 @@ class AutoClickBot:
                         create_frame(sub, level + 1, parent_frame=body_items, parent_list=p["body"], index=i)
 
             if "true_branch" in p:
-                then_frame = tk.Frame(frame, bg="#1a3a1a", bd=2, relief="ridge")
+                then_frame = tk.Frame(frame, bg="#12231a", bd=2, relief="ridge")
                 then_frame.pack(fill="both", expand=True, pady=(8,4), padx=(8, 8))
-                then_header = tk.Frame(then_frame, bg="#1a3a1a")
+                then_header = tk.Frame(then_frame, bg="#12231a")
                 then_header.pack(fill="x", padx=10, pady=4)
-                tk.Label(then_header, text="▼ THEN (true)", bg="#1a3a1a", fg="#55ff88", font=("Consolas", 10, "bold")).pack(side="left")
-                tk.Button(then_header, text="+", font=("Consolas", 9, "bold"), bg="#2ecc71", fg="white", width=2, relief="flat",
+                tk.Label(then_header, text="▼ THEN (true)", bg="#12231a", fg="#55ff88", font=("Consolas", 10, "bold")).pack(side="left")
+                tk.Button(then_header, text="+", font=("Consolas", 9, "bold"), bg="#54e0a2", fg="white", width=2, relief="flat",
                           command=lambda plist=p["true_branch"]: self._set_target_and_show_menu(plist, "logic")).pack(side="right", padx=5)
                 then_items = tk.Frame(then_frame, bg="#0d2d0d")
                 then_items.pack(fill="both", expand=True, padx=6, pady=4)
@@ -6065,12 +6088,12 @@ class AutoClickBot:
                         create_frame(sub, level + 1, is_then=True, parent_frame=then_items, parent_list=p["true_branch"], index=i)
 
             if "false_branch" in p:
-                else_frame = tk.Frame(frame, bg="#3a1a1a", bd=2, relief="ridge")
+                else_frame = tk.Frame(frame, bg="#241314", bd=2, relief="ridge")
                 else_frame.pack(fill="both", expand=True, pady=(4,8), padx=(8, 8))
-                else_header = tk.Frame(else_frame, bg="#3a1a1a")
+                else_header = tk.Frame(else_frame, bg="#241314")
                 else_header.pack(fill="x", padx=10, pady=4)
-                tk.Label(else_header, text="▼ ELSE (false)", bg="#3a1a1a", fg="#ff8888", font=("Consolas", 10, "bold")).pack(side="left")
-                tk.Button(else_header, text="+", font=("Consolas", 9, "bold"), bg="#2ecc71", fg="white", width=2, relief="flat",
+                tk.Label(else_header, text="▼ ELSE (false)", bg="#241314", fg="#ff8888", font=("Consolas", 10, "bold")).pack(side="left")
+                tk.Button(else_header, text="+", font=("Consolas", 9, "bold"), bg="#54e0a2", fg="white", width=2, relief="flat",
                           command=lambda plist=p["false_branch"]: self._set_target_and_show_menu(plist, "logic")).pack(side="right", padx=5)
                 else_items = tk.Frame(else_frame, bg="#2d0d0d")
                 else_items.pack(fill="both", expand=True, padx=6, pady=4)
@@ -6120,7 +6143,7 @@ class AutoClickBot:
         if highlight:
             zone.config(bg="#00aaff", relief="raised", bd=1)
         else:
-            zone.config(bg="#1a1f3a", relief="flat", bd=0)
+            zone.config(bg="#14161e", relief="flat", bd=0)
 
     def _start_drag(self, event, frame, frame_id):
         self.drag_data = {
@@ -6138,10 +6161,10 @@ class AutoClickBot:
         ghost.overrideredirect(True)
         ghost.attributes("-alpha", 0.72)
         ghost.geometry(f"+{event.x_root - event.x}+{event.y_root - event.y}")
-        ghost_frame = tk.Frame(ghost, bg="#2c3e50", bd=2, relief="raised")
+        ghost_frame = tk.Frame(ghost, bg="#1c2230", bd=2, relief="raised")
         ghost_frame.pack()
         tk.Label(ghost_frame, text="≡ " + self._action_summary(act), font=("Consolas", 10),
-                 bg="#2c3e50", fg="#ecf0f1").pack(padx=10, pady=5)
+                 bg="#1c2230", fg="#ecf0f1").pack(padx=10, pady=5)
         self.drag_data["ghost"] = ghost
         frame.config(relief="flat", bd=0)
 
@@ -6556,18 +6579,18 @@ class AutoClickBot:
                 bool_win = Toplevel(self.root)
                 bool_win.title("Set Value")
                 bool_win.geometry("250x150")
-                bool_win.configure(bg="#0a0e27")
+                bool_win.configure(bg="#0a0b11")
                 bool_win.transient(self.root)
                 bool_win.grab_set()
                 self._center_dialog(bool_win)
-                main_f = tk.Frame(bool_win, bg="#0a0e27")
+                main_f = tk.Frame(bool_win, bg="#0a0b11")
                 main_f.pack(fill="both", expand=True, padx=40, pady=20)
-                tk.Label(main_f, text="Initial Value:", font=("Consolas", 12, "bold"), bg="#0a0e27", fg="#ffd700").pack(pady=(0,15))
-                tk.Radiobutton(main_f, text="True", variable=bool_val, value="true", font=("Consolas", 11), bg="#0a0e27", fg="#fff", selectcolor="#1a1f3a").pack(anchor="w", pady=5)
-                tk.Radiobutton(main_f, text="False", variable=bool_val, value="false", font=("Consolas", 11), bg="#0a0e27", fg="#fff", selectcolor="#1a1f3a").pack(anchor="w", pady=5)
+                tk.Label(main_f, text="Initial Value:", font=("Consolas", 12, "bold"), bg="#0a0b11", fg="#f6c453").pack(pady=(0,15))
+                tk.Radiobutton(main_f, text="True", variable=bool_val, value="true", font=("Consolas", 11), bg="#0a0b11", fg="#fff", selectcolor="#14161e").pack(anchor="w", pady=5)
+                tk.Radiobutton(main_f, text="False", variable=bool_val, value="false", font=("Consolas", 11), bg="#0a0b11", fg="#fff", selectcolor="#14161e").pack(anchor="w", pady=5)
                 def confirm_bool():
                     bool_win.destroy()
-                tk.Button(main_f, text="OK", font=("Consolas", 11, "bold"), bg="#2ecc71", fg="white", relief="flat", command=confirm_bool).pack(pady=(10,0), ipady=5, fill="x")
+                tk.Button(main_f, text="OK", font=("Consolas", 11, "bold"), bg="#54e0a2", fg="white", relief="flat", command=confirm_bool).pack(pady=(10,0), ipady=5, fill="x")
                 bool_win.wait_window()
                 value = bool_val.get() == "true"
                 apply_params({"name": name.strip(), "type": selected_type, "value": value})
@@ -6822,8 +6845,8 @@ class AutoClickBot:
     # ─────────────────────────────────────────────
     def _show_action_context_menu(self, event, act, frame_id):
         import copy
-        menu = tk.Menu(self.root, tearoff=0, bg="#1a1f3a", fg="#ffffff",
-                       activebackground="#ffd700", activeforeground="#0a0e27",
+        menu = tk.Menu(self.root, tearoff=0, bg="#14161e", fg="#ffffff",
+                       activebackground="#f6c453", activeforeground="#0a0b11",
                        font=("Segoe UI", 10), relief="flat", bd=1)
 
         # ── Edit ──────────────────────────────────
@@ -6928,7 +6951,7 @@ class AutoClickBot:
         # ── Delete ────────────────────────────────
         menu.add_command(label="  ✕  Delete",
                          command=lambda: self._delete_action(act),
-                         foreground="#ff5555", activeforeground="#ff5555")
+                         foreground="#ff7a7a", activeforeground="#ff7a7a")
 
         menu.tk_popup(event.x_root, event.y_root)
 
@@ -7043,14 +7066,14 @@ class AutoClickBot:
         # ── Top info bar (opaque strip) ──────────────────────────────────
         base_w, base_h = BASE_RES
         scale_info = f"Base: {base_w}x{base_h}  →  Screen: {sw}x{sh}  |  Scale X:{_SCALE_X:.3f}  Y:{_SCALE_Y:.3f}"
-        canvas.create_rectangle(0, 0, sw, 54, fill="#0a0e27", outline="")
-        canvas.create_rectangle(0, 52, sw, 54, fill="#ffd700", outline="")
+        canvas.create_rectangle(0, 0, sw, 54, fill="#0a0b11", outline="")
+        canvas.create_rectangle(0, 52, sw, 54, fill="#f6c453", outline="")
         canvas.create_text(sw//2, 18,
             text=f"🎯  {atype}   —   Click anywhere or ESC to close",
-            fill="#ffd700", font=("Segoe UI", 11, "bold"))
+            fill="#f6c453", font=("Segoe UI", 11, "bold"))
         canvas.create_text(sw//2, 38,
             text=scale_info,
-            fill="#8b9dc3", font=("Segoe UI", 8))
+            fill="#8b91a8", font=("Segoe UI", 8))
 
         # ── Params info panel (top-right, below the info bar) ───────────
         info_lines = [f"Action: {atype}"]
@@ -7061,9 +7084,9 @@ class AutoClickBot:
         panel_x = sw - panel_w - 8
         panel_y = 58   # just below the top info bar
         canvas.create_rectangle(panel_x, panel_y, panel_x + panel_w, panel_y + panel_h,
-                                 fill="#0a0e27", outline="#ffd700", width=1)
+                                 fill="#0a0b11", outline="#f6c453", width=1)
         for i, line in enumerate(info_lines):
-            col = "#ffd700" if i == 0 else "#cccccc"
+            col = "#f6c453" if i == 0 else "#cccccc"
             canvas.create_text(panel_x + 8, panel_y + 10 + i * 18,
                                text=line, anchor="w", fill=col,
                                font=("Consolas", 9, "bold" if i == 0 else "normal"))
@@ -7089,7 +7112,7 @@ class AutoClickBot:
             lw = max(120, len(label) * 8 + 20)
             canvas.create_rectangle(mid_x - lw//2, y1 - 18,
                                      mid_x + lw//2, y1 + 2,
-                                     fill="#0a0e27", outline=color, width=1)
+                                     fill="#0a0b11", outline=color, width=1)
             canvas.create_text(mid_x, y1 - 8, text=label,
                                 fill=color, font=("Segoe UI", 8, "bold"))
             # Size + coords inside region (show both screen px and raw config values)
@@ -7104,22 +7127,22 @@ class AutoClickBot:
         for (cx, cy, label) in click_points:
             R = 14
             # Full-screen dashed crosshair lines
-            canvas.create_line(0,  cy, cx - R, cy,  fill="#ff4444", width=1, dash=(4, 4))
-            canvas.create_line(cx + R, cy, sw, cy,  fill="#ff4444", width=1, dash=(4, 4))
-            canvas.create_line(cx, 54, cx, cy - R,  fill="#ff4444", width=1, dash=(4, 4))
-            canvas.create_line(cx, cy + R, cx, sh,  fill="#ff4444", width=1, dash=(4, 4))
+            canvas.create_line(0,  cy, cx - R, cy,  fill="#ff6b6b", width=1, dash=(4, 4))
+            canvas.create_line(cx + R, cy, sw, cy,  fill="#ff6b6b", width=1, dash=(4, 4))
+            canvas.create_line(cx, 54, cx, cy - R,  fill="#ff6b6b", width=1, dash=(4, 4))
+            canvas.create_line(cx, cy + R, cx, sh,  fill="#ff6b6b", width=1, dash=(4, 4))
             # Solid inner crosshair arms
-            canvas.create_line(cx - R, cy, cx + R, cy, fill="#ff4444", width=2)
-            canvas.create_line(cx, cy - R, cx, cy + R, fill="#ff4444", width=2)
+            canvas.create_line(cx - R, cy, cx + R, cy, fill="#ff6b6b", width=2)
+            canvas.create_line(cx, cy - R, cx, cy + R, fill="#ff6b6b", width=2)
             # Outer ring
             canvas.create_oval(cx - R, cy - R, cx + R, cy + R,
-                                outline="#ff4444", width=2)
+                                outline="#ff6b6b", width=2)
             # Inner ring
             canvas.create_oval(cx - 6, cy - 6, cx + 6, cy + 6,
-                                outline="#ff4444", width=1)
+                                outline="#ff6b6b", width=1)
             # Centre dot (filled)
             canvas.create_oval(cx - 3, cy - 3, cx + 3, cy + 3,
-                                fill="#ff4444", outline="")
+                                fill="#ff6b6b", outline="")
             # Coordinate label pill — keep on screen
             pill_x = cx + 20 if cx + 180 < sw else cx - 180
             pill_y = cy - 12
@@ -7127,18 +7150,18 @@ class AutoClickBot:
             pw = len(ltext) * 7 + 20
             canvas.create_rectangle(pill_x, pill_y - 2,
                                      pill_x + pw, pill_y + 16,
-                                     fill="#0a0e27", outline="#ff4444", width=1)
+                                     fill="#0a0b11", outline="#ff6b6b", width=1)
             canvas.create_text(pill_x + 8, pill_y + 7,
                                 text=ltext, anchor="w",
-                                fill="#ff4444", font=("Consolas", 9, "bold"))
+                                fill="#ff6b6b", font=("Consolas", 9, "bold"))
 
         # ── Live mouse tracker (bottom-right) ───────────────────────────
         tracker_bg = canvas.create_rectangle(sw - 220, sh - 40,
                                               sw - 4, sh - 4,
-                                              fill="#0a0e27", outline="#ffd700", width=1)
+                                              fill="#0a0b11", outline="#f6c453", width=1)
         mouse_lbl = canvas.create_text(sw - 112, sh - 22,
                                         text="🖱  X=0   Y=0",
-                                        fill="#ffd700", font=("Consolas", 10, "bold"))
+                                        fill="#f6c453", font=("Consolas", 10, "bold"))
 
         def _on_mouse(e):
             canvas.itemconfig(mouse_lbl, text=f"🖱  X={e.x}   Y={e.y}")
