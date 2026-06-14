@@ -1,0 +1,14 @@
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0+cu124
+torchvision==0.21.0+cu124
+easyocr
+opencv-python
+pillow
+numpy
+pyautogui
+keyboard
+requests
+pywin32
+psutil
+cython
+pyinstaller

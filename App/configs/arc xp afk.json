@@ -1,0 +1,170 @@
+{
+  "base_res": "3840x2160",
+  "sequence": [
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 3286,
+        "y": 1222
+      },
+      "_id": "1f89de2651"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "825e77a2c5"
+    },
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 564,
+        "y": 1006
+      },
+      "_id": "1f89de2651"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "d4cc6d200d"
+    },
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 3318,
+        "y": 1732
+      },
+      "_id": "1f89de2651"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "c718c974f3"
+    },
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 3298,
+        "y": 1822
+      },
+      "_id": "1f89de2651"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "008f899b8a"
+    },
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 1372,
+        "y": 60
+      },
+      "_id": "1f89de2651"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "b3b1ba6f38"
+    },
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 3306,
+        "y": 1812
+      },
+      "_id": "1f89de2651"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "c94b4fcb63"
+    },
+    {
+      "type": "Wait for Text (OCR)",
+      "params": {
+        "text": "CONTINUE",
+        "region": [
+          3404,
+          2024,
+          274,
+          98
+        ],
+        "timeout_ms": 2000000.0,
+        "interval_ms": 1000.0
+      },
+      "_id": "9dfbe9837a"
+    },
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 3452,
+        "y": 2050
+      },
+      "_id": "95b9c1e48a"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "c94b4fcb63"
+    },
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 3518,
+        "y": 2068
+      },
+      "_id": "ec9ba45bb1"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "c94b4fcb63"
+    },
+    {
+      "type": "Single Click",
+      "params": {
+        "x": 3548,
+        "y": 2066
+      },
+      "_id": "b212010918"
+    },
+    {
+      "type": "Wait (milliseconds)",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "_id": "c94b4fcb63"
+    },
+    {
+      "type": "Wait for Text (OCR)",
+      "params": {
+        "text": "PLAY",
+        "region": [
+          3192,
+          1764,
+          294,
+          132
+        ],
+        "timeout_ms": 100000.0,
+        "interval_ms": 300.0
+      },
+      "_id": "06e1639e31"
+    }
+  ]
+}

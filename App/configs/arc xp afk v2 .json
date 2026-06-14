@@ -1,0 +1,205 @@
+{
+  "base_res": "3840x2160",
+  "sequence": [
+    {
+      "_id": "d0d31d35cc",
+      "params": {
+        "x": 3286,
+        "y": 1222
+      },
+      "type": "Single Click"
+    },
+    {
+      "_id": "1446e6206b",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "type": "Wait (milliseconds)"
+    },
+    {
+      "_id": "88f80fd62c",
+      "params": {
+        "x": 564,
+        "y": 1006
+      },
+      "type": "Single Click"
+    },
+    {
+      "_id": "facf6e967a",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "type": "Wait (milliseconds)"
+    },
+    {
+      "type": "If OCR text exists (branch)",
+      "params": {
+        "text": "Selected",
+        "region": [
+          3170,
+          1716,
+          320,
+          130
+        ],
+        "true_branch": [
+          {
+            "type": "Single Click",
+            "params": {
+              "x": 188,
+              "y": 2072
+            },
+            "_id": "1996c9d730"
+          },
+          {
+            "type": "Wait (milliseconds)",
+            "params": {
+              "milliseconds": 1200.0
+            },
+            "_id": "c14a2aed82"
+          }
+        ],
+        "false_branch": [
+          {
+            "_id": "035584e216",
+            "params": {
+              "x": 3318,
+              "y": 1732
+            },
+            "type": "Single Click"
+          },
+          {
+            "_id": "27d2c8f213",
+            "params": {
+              "milliseconds": 1200.0
+            },
+            "type": "Wait (milliseconds)"
+          }
+        ]
+      },
+      "_id": "38dd1500f2"
+    },
+    {
+      "_id": "9dc8e1c3d0",
+      "params": {
+        "x": 3298,
+        "y": 1822
+      },
+      "type": "Single Click"
+    },
+    {
+      "_id": "c2db069f80",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "type": "Wait (milliseconds)"
+    },
+    {
+      "_id": "0f61b30cc6",
+      "params": {
+        "x": 1372,
+        "y": 60
+      },
+      "type": "Single Click"
+    },
+    {
+      "_id": "56664753b2",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "type": "Wait (milliseconds)"
+    },
+    {
+      "_id": "858a3f50bd",
+      "params": {
+        "x": 3306,
+        "y": 1812
+      },
+      "type": "Single Click"
+    },
+    {
+      "_id": "743556ff24",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "type": "Wait (milliseconds)"
+    },
+    {
+      "_id": "2ec15fca62",
+      "params": {
+        "interval_ms": 1000.0,
+        "region": [
+          3404,
+          2024,
+          274,
+          98
+        ],
+        "text": "CONTINUE",
+        "timeout_ms": 2000000.0
+      },
+      "type": "Wait for Text (OCR)"
+    },
+    {
+      "_id": "1b83979ab4",
+      "params": {
+        "x": 3452,
+        "y": 2050
+      },
+      "type": "Single Click"
+    },
+    {
+      "_id": "d801fed2bd",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "type": "Wait (milliseconds)"
+    },
+    {
+      "_id": "f0ff4e065c",
+      "params": {
+        "x": 3518,
+        "y": 2068
+      },
+      "type": "Single Click"
+    },
+    {
+      "_id": "12c841faa0",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "type": "Wait (milliseconds)"
+    },
+    {
+      "_id": "c340d715fc",
+      "params": {
+        "x": 3548,
+        "y": 2066
+      },
+      "type": "Single Click"
+    },
+    {
+      "_id": "45adb855cc",
+      "params": {
+        "milliseconds": 1200.0
+      },
+      "type": "Wait (milliseconds)"
+    },
+    {
+      "_id": "a4f63b4497",
+      "params": {
+        "interval_ms": 300.0,
+        "region": [
+          3192,
+          1764,
+          294,
+          132
+        ],
+        "text": "PLAY",
+        "timeout_ms": 100000.0
+      },
+      "type": "Wait for Text (OCR)"
+    }
+  ],
+  "name": "AFK XP Loop — Arc Raiders",
+  "desc": "Fully automated XP farming loop for Arc Raiders. Queues a match, waits for the end screen, confirms results, and loops back to queue again — fully AFK XP grinding while you sleep.",
+  "emoji": "⚡"
+}
