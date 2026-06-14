@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, send_from_directory, abort, render_te
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-import os, csv, json, glob, threading, requests as _requests
+import os, csv, json, glob, threading, hmac, requests as _requests
 try:
     import cloudscraper as _cloudscraper
     _scraper = _cloudscraper.create_scraper(browser={"browser":"chrome","platform":"windows","mobile":False})
@@ -57,6 +57,11 @@ BASE_URL                    = "http://132.145.60.51:5000"
 SELLAUTH_SHOP_ID = "214568"   # public shop id, not a secret
 SELLAUTH_API_KEY = _secret('SELLAUTH_API_KEY')
 
+# ── Admin ─────────────────────────────────────────
+# Token required by every /admin/* route. Set via env ADMIN_KEY or
+# secrets_local.py. If unset, admin routes fail closed (deny all).
+ADMIN_KEY = _secret('ADMIN_KEY')
+
 DISCORD_OAUTH_REDIRECT = f"{BASE_URL}/discord/callback"
 DISCORD_OAUTH_URL = (
     "https://discord.com/api/oauth2/authorize"
@@ -86,7 +91,8 @@ def _handle_exception(e):
     except Exception:
         pass
     from flask import jsonify as _j
-    return _j({"error": f"Server error: {type(e).__name__}: {str(e)}"}), 500
+    # Details stay in server logs only — never leak type/message to the client.
+    return _j({"error": "Internal server error"}), 500
 
 @app.errorhandler(400)
 def _bad_request(e):
@@ -793,14 +799,33 @@ def app_download():
                      as_attachment=True,
                      download_name="PatoToolBot.zip")
 
+def _require_admin():
+    """Return None if the caller presented a valid admin token, else a 401 response.
+
+    Token comes from the X-Admin-Token header (preferred) or the legacy ?key=
+    query param, compared in constant time against ADMIN_KEY. Fails closed when
+    ADMIN_KEY is unset so admin routes are never open by default.
+    """
+    provided = request.headers.get('X-Admin-Token') or request.args.get('key') or ''
+    if ADMIN_KEY and hmac.compare_digest(str(provided), str(ADMIN_KEY)):
+        return None
+    return jsonify({"error": "Unauthorized"}), 401
+
+
 @app.route('/admin/serials', methods=['GET'])
 def admin_serials():
+    denied = _require_admin()
+    if denied:
+        return denied
     return jsonify(AVAILABLE_SERIALS), 200
 
 
 @app.route('/admin/invoices', methods=['GET'])
 def admin_invoices():
     """List all redeemed invoices."""
+    denied = _require_admin()
+    if denied:
+        return denied
     rows = RedeemedInvoice.query.order_by(RedeemedInvoice.redeemed_at.desc()).all()
     return jsonify([{
         "id": r.id, "invoice_id": r.invoice_id,
@@ -811,9 +836,10 @@ def admin_invoices():
 
 @app.route('/admin/invoices/reset', methods=['POST'])
 def admin_invoices_reset():
-    """Delete all redeemed invoices — POST /admin/invoices/reset?key=pato2026"""
-    if request.args.get('key') != 'pato2026':
-        return jsonify({"error": "Unauthorized"}), 401
+    """Delete all redeemed invoices. Requires X-Admin-Token header (or ?key=)."""
+    denied = _require_admin()
+    if denied:
+        return denied
     count = RedeemedInvoice.query.count()
     RedeemedInvoice.query.delete()
     db.session.commit()
@@ -823,9 +849,10 @@ def admin_invoices_reset():
 
 @app.route('/admin/invoices/delete/<invoice_id>', methods=['POST'])
 def admin_invoice_delete(invoice_id):
-    """Delete a single redeemed invoice — POST /admin/invoices/delete/INV-XXX?key=pato2026"""
-    if request.args.get('key') != 'pato2026':
-        return jsonify({"error": "Unauthorized"}), 401
+    """Delete a single redeemed invoice. Requires X-Admin-Token header (or ?key=)."""
+    denied = _require_admin()
+    if denied:
+        return denied
     row = RedeemedInvoice.query.filter_by(invoice_id=invoice_id).first()
     if not row:
         return jsonify({"error": "Invoice not found"}), 404
