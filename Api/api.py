@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, send_from_directory, abort, render_te
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-import os, csv, json, glob, threading, hmac, requests as _requests
+import os, csv, json, glob, threading, hmac, secrets as _pysecrets, requests as _requests
 try:
     import cloudscraper as _cloudscraper
     _scraper = _cloudscraper.create_scraper(browser={"browser":"chrome","platform":"windows","mobile":False})
@@ -40,6 +40,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users_licenses.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = _secret('JWT_SECRET_KEY', 'dev-insecure-change-me')
 app.config['SECRET_KEY']     = _secret('FLASK_SECRET_KEY', 'dev-insecure-change-me')
+
+# Session cookie hardening. SameSite=Lax stops the cookie from riding along on
+# cross-site POSTs (the CSRF vector for /verify-invoice). Secure needs HTTPS, so
+# it's opt-in via env to avoid breaking the plain-HTTP deployment.
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SECURE']   = os.getenv('SESSION_COOKIE_SECURE', '0') == '1'
 
 # ── Discord ───────────────────────────────────────
 DISCORD_CLIENT_ID           = "1477748438190788630"   # public, not a secret
@@ -1170,6 +1177,7 @@ DOWNLOAD_PAGE = """<!DOCTYPE html>
         <div class="sep"></div>
         <span class="label">Sellauth Invoice ID</span>
         <form method="POST" action="/verify-invoice" class="flex-col" style="gap:14px;">
+          <input type="hidden" name="csrf" value="{{ csrf_token }}"/>
           <input type="text" name="invoice_id" placeholder="9300de157a26c-0000010499984" autocomplete="off" required/>
           {% if error %}<span class="badge badge-err">⚠ {{ error }}</span>{% endif %}
           <button type="submit" class="btn btn-gold"><span>Confirm Purchase →</span></button>
@@ -1246,7 +1254,17 @@ def discord_callback():
     session['discord_user'] = {'id': discord_id, 'username': discord_name}
     return render_template_string(DOWNLOAD_PAGE,
         step=2, error=None, version=LATEST_VERSION,
-        oauth_url='', product='', download_url='', discord_user=discord_name)
+        oauth_url='', product='', download_url='', discord_user=discord_name,
+        csrf_token=_csrf_token())
+
+
+def _csrf_token():
+    """Return this session's CSRF token, creating one on first use."""
+    tok = session.get('csrf')
+    if not tok:
+        tok = _pysecrets.token_urlsafe(32)
+        session['csrf'] = tok
+    return tok
 
 
 @app.route('/verify-invoice', methods=['POST'])
@@ -1254,21 +1272,25 @@ def verify_invoice():
     discord_info = session.get('discord_user')
     if not discord_info:
         return redirect('/dl/?error=Session+expired,+login+with+Discord+again')
+    # CSRF: the posted token must match the one issued when step 2 was rendered.
+    sess_tok = session.get('csrf')
+    if not sess_tok or not hmac.compare_digest(request.form.get('csrf', ''), sess_tok):
+        return redirect('/dl/?error=Session+expired,+login+with+Discord+again')
     invoice_id = request.form.get('invoice_id', '').strip()
     if not invoice_id:
         return render_template_string(DOWNLOAD_PAGE, step=2, error='Please enter invoice ID',
             version=LATEST_VERSION, oauth_url='', product='', download_url='',
-            discord_user=discord_info['username'])
+            discord_user=discord_info['username'], csrf_token=_csrf_token())
     already = RedeemedInvoice.query.filter_by(invoice_id=invoice_id).first()
     if already:
         return render_template_string(DOWNLOAD_PAGE, step=2, error='Invoice already redeemed',
             version=LATEST_VERSION, oauth_url='', product='', download_url='',
-            discord_user=discord_info['username'])
+            discord_user=discord_info['username'], csrf_token=_csrf_token())
     result = sellauth_verify(invoice_id)
     if not result['valid']:
         return render_template_string(DOWNLOAD_PAGE, step=2, error=result['error'],
             version=LATEST_VERSION, oauth_url='', product='', download_url='',
-            discord_user=discord_info['username'])
+            discord_user=discord_info['username'], csrf_token=_csrf_token())
     discord_id   = discord_info['id']
     discord_name = discord_info['username']
     product      = result.get('product', "Pato's Tool Bot")
